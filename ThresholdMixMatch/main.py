@@ -76,12 +76,15 @@ def linear_rampup(current, rampup_length):
         
 class SemiLoss(object):
     def __call__(self, outputs_x, targets_x, outputs_u, targets_u, epoch, final_epoch):
+        # for threshold
         outputs_u_temp = []
         targets_u_temp = []
         prob_threshold = []
         for prob in targets_u:
             prob_threshold.append(max(prob).item())
-        threshold = np.quantile(prob_threshold, (linear_rampup(epoch, final_epoch) * -0.7 + 0.7))
+        threshold = np.quantile(prob_threshold, (linear_rampup(epoch, final_epoch) * -0.7 + 0.7)) # threshold scheduling y = -0.7x + 0.7
+        
+        # filter by threshold
         for idx, prob in enumerate(targets_u):
             if (max(prob) >= threshold):
                 targets_u_temp.append(prob)
