@@ -75,13 +75,15 @@ def linear_rampup(current, rampup_length):
         
 class SemiLoss(object):
     def __call__(self, outputs_x, targets_x, outputs_u, targets_u, epoch, final_epoch):
+        # for threshold
         outputs_u_temp = []
         targets_u_temp = []
         prob_threshold = []
         for prob in targets_u:
             prob_threshold.append(max(prob).item())
-        threshold = np.quantile(prob_threshold, (linear_rampup(epoch, final_epoch) * -0.7 + 0.7))
+        threshold = np.quantile(prob_threshold, (linear_rampup(epoch, final_epoch) * -0.7 + 0.7)) # threshold scheduling y = -0.7x + 0.7
 
+        # filter by threshold
         for idx, prob in enumerate(targets_u):
             if (max(prob) >= threshold):
                 targets_u_temp.append(prob)
@@ -327,6 +329,7 @@ def main():
                                 batch_size=opts.batchsize, shuffle=True, num_workers=0, pin_memory=True, drop_last=True)
         print('unlabel_loaderweak done')  
 
+        # strong data augmentation: Crop, Horizontal Flip, Vertical Flip, Rotation, Color Jitter, and Cutout
         unlabel_loaderstrong = torch.utils.data.DataLoader(
             SimpleImageLoader(DATASET_PATH, 'unlabel', unl_ids,
                               transform=transforms.Compose([
@@ -428,10 +431,10 @@ def train(opts, train_loader, unlabel_loaderweak, unlabel_loaderstrong, model, c
                 data = unlabeledstrong_train_iter.next()
                 inputs_us1, inputs_us2 = data
             except:
-                unlabeledweak_train_iter = iter(unlabel_loaderweak)       
+                unlabeledweak_train_iter = iter(unlabel_loaderweak)
                 data = unlabeledweak_train_iter.next()
                 inputs_uw1, inputs_uw2 = data
-                unlabeledstrong_train_iter = iter(unlabel_loaderstrong)       
+                unlabeledstrong_train_iter = iter(unlabel_loaderstrong)
                 data = unlabeledstrong_train_iter.next()
                 inputs_us1, inputs_us2 = data         
         
@@ -456,8 +459,8 @@ def train(opts, train_loader, unlabel_loaderweak, unlabel_loaderstrong, model, c
                 targets_u = targets_u.detach()
                 
             # mixup
-            all_inputs = torch.cat([inputs_x, inputs_us1, inputs_us2], dim=0)
-            all_targets = torch.cat([targets_x, targets_u, targets_u], dim=0)            
+            all_inputs = torch.cat([inputs_x, inputs_us1, inputs_us2], dim=0) #labeled data and strongly augmented unlabeled data
+            all_targets = torch.cat([targets_x, targets_u, targets_u], dim=0) #labeled data and weakly augmented unlabeled data
             
             lamda = np.random.beta(opts.alpha, opts.alpha)        
             lamda= max(lamda, 1-lamda)    
