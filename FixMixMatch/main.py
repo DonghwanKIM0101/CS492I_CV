@@ -450,7 +450,7 @@ def train(opts, train_loader, unlabel_loaderweak, unlabel_loaderstrong, model, c
                 inputs_us1, inputs_us2 = inputs_us1.cuda(), inputs_us2.cuda()    
             
             with torch.no_grad():
-                # compute guessed labels of unlabel samples
+                # compute guessed labels of weakly augmented unlabel samples
                 embed_uw1, pred_uw1 = model(inputs_uw1)
                 embed_uw2, pred_uw2 = model(inputs_uw2)
                 pred_u_all = (torch.softmax(pred_uw1, dim=1) + torch.softmax(pred_uw2, dim=1)) / 2
@@ -459,8 +459,8 @@ def train(opts, train_loader, unlabel_loaderweak, unlabel_loaderstrong, model, c
                 targets_u = targets_u.detach()
                 
             # mixup
-            all_inputs = torch.cat([inputs_x, inputs_us1, inputs_us2], dim=0) #labeled data and strongly augmented unlabeled data
-            all_targets = torch.cat([targets_x, targets_u, targets_u], dim=0) #labeled data and weakly augmented unlabeled data
+            all_inputs = torch.cat([inputs_x, inputs_us1, inputs_us2], dim=0) # labeled data and strongly augmented unlabeled data
+            all_targets = torch.cat([targets_x, targets_u, targets_u], dim=0) # labeled data and weakly augmented unlabeled data
             
             lamda = np.random.beta(opts.alpha, opts.alpha)        
             lamda= max(lamda, 1-lamda)    
