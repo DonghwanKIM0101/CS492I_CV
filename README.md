@@ -6,6 +6,8 @@ Authorized [DonghwanKim](https://github.com/DonghwanKIM0101)
 
 Authorized [SeungilLee](https://github.com/ChoiIseungil)
 
+-----------
+
 You can also pull non-pretrained FixMixMatch model code by:
 
     nsml pull kaist0015/fashion_dataset/1321 .
@@ -32,6 +34,10 @@ You can also pull pretrained ThresholdMixMatch model code by:
 
 
 # Summary
+
+It is project in KAIST CS492(I) course. With NSML of NAVER, implement shopping item object detection model. 
+
+![Alt text]()
 
 # Result
 
