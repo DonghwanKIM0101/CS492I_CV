@@ -36,8 +36,7 @@ You can also pull pretrained ThresholdMixMatch model code by:
     2.2 [Data Augmentation](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#data-augmentation)
 
 3. [Result](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#result)
-4. [Further](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#further)
-
+4. [Conclusion](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#conclusion)
 
 # Summary
 
@@ -56,7 +55,6 @@ Our team's approach is to exploit [FixMatch](https://arxiv.org/pdf/2001.07685.pd
 Threshold is one of main concept of FixMatch.
 
 <img src="Image/threshold.png" width="450px"></img><br/>
-
 > https://arxiv.org/pdf/2001.07685.pdf
 
 By using threshold while guessing pseudo label, the model only learn for confident unlabeled data.
@@ -65,12 +63,37 @@ We suggest new concept threshold scheduling.
 
 <img src="Image/threshold_scheduling.png" width="450px"></img><br/>
 
+In the graph, X-axis is current_epoch/total_epoch and Y-axis is the probability that unused unlabeled data.
+For first epoch, the model learn the most confident 30% unlabeled data, and for last epoch, the model learn all of the unlabeled data. 
 
 ## Data Augmentation
 
+FixMatch uses both weakly augmented data and strongly augmented data.
+
+<img src="Image/data_augmentation.png" width="450px"></img><br/>
+> https://arxiv.org/pdf/2001.07685.pdf
+
+For weak data augmentation, Crop, Horizontal Flip, and Vertical Flip
+For strong data augmentaion, Crop, Horizontal Flip, Vertical Flip, Rotation, Color Jitter, and Cutout
+
 # Result
 
-# Further
+To check our own model, compare MixMatch, ThresholdMixMatch, FixMixMatch.
+ThresholdMixMatch is MixMatch with threshold scheduling,
+FixMixMatch is MixMatch with threshold scheduling, weak and strong data augmentation.
+We use DenseNet121 for all tests.
+
+<img src="Image/avg_top1_np.png" width="300px"></img><br/>
+<img src="Image/avg_top5_np.png" width="300px"></img><br/>
+
+For non-pretrained model, ThresholdMixMatch shows the best result and FixMixMatch shows the worst result.
+
+<img src="Image/avg_top1_p.png" width="300px"></img><br/>
+<img src="Image/avg_top5_p.png" width="300px"></img><br/>
+
+For pretrained model, three models show similar result although FixMixMatch shows the worst result in average top1.
+
+# Conclusion
 
 
 
