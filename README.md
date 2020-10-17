@@ -2,9 +2,9 @@
 
 KAIST CS492(I) Special Topics in Computer Science[Deep Learning for Real-World Problems]
 
-Authorized DonghwanKim https://github.com/DonghwanKIM0101
+Authorized [DonghwanKim](https://github.com/DonghwanKIM0101)
 
-Authorized Seungil Li https://github.com/
+Authorized [SeungilLi](https://github.com/)
 
 You can also pull non-pretrained FixMixMatch model code by:
 
