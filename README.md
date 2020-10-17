@@ -37,6 +37,7 @@ You can also pull pretrained ThresholdMixMatch model code by:
 
 3. [Result](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#result)
 4. [Conclusion](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#conclusion)
+5. [Reference](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#reference)
 
 # Summary
 
@@ -94,6 +95,22 @@ For non-pretrained model, ThresholdMixMatch shows the best result and FixMixMatc
 For pretrained model, three models show similar result although FixMixMatch shows the worst result in average top1.
 
 # Conclusion
+
+We wanted to exploit FixMatch to MixMatch; FixMixMatch.
+From the result, FixMixMatch does not show good result for non-pretrained model.
+We guessed that it is because the strong data augmentation does not work well in non-pretrained model.
+
+<img src="Image/conclusion.png" width="300px"></img><br/>
+
+The graph proves our guess.
+
+However, threshold scheduling improves the result.
+Compared to original threshold concept, our new concept focuses more on non-pretrained model.
+Also, by testing the models in pretrained option, we can get FixMatch works well in pretrained option but does not in non-pretrained option.
+
+# Reference
+D Berthelot, N Carlini, I Goodfellow, N Papernot, A Oliver, CA Raffel, MixMatch: A Holistic Approach to Semi-Supervised Learning, 2019 
+Kihyuk Sohn, David Berthelot, Chun-Liang Li, Zizhao Zhang, FixMatch: Simplifying Semi-Supervised Learning with Consistency and Confidence, 2020
 
 
 
