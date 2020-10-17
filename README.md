@@ -55,9 +55,15 @@ Our team's approach is to exploit [FixMatch](https://arxiv.org/pdf/2001.07685.pd
 
 Threshold is one of main concept of FixMatch.
 
-![Alt text](Image/threshold.png)
+<img src="Image/threshold.png" width="450px"></img><br/>
+
+> https://arxiv.org/pdf/2001.07685.pdf
 
 By using threshold while guessing pseudo label, the model only learn for confident unlabeled data.
+Original method use fixed threshold value, 0.95. Compared to original method, our team have to use non-pretrained model for this project.
+We suggest new concept threshold scheduling.
+
+<img src="Image/threshold_scheduling.png" width="450px"></img><br/>
 
 
 ## Data Augmentation
