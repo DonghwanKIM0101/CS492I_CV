@@ -31,9 +31,9 @@ You can also pull pretrained ThresholdMixMatch model code by:
 1. [Summary](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#summary)
 2. [Method](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#method)
 
-    2.1 [Threshold]
+    2.1 [Threshold](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#threshold)
 
-    2.2 [Data Augmentation]
+    2.2 [Data Augmentation](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#data-augmentation)
 
 3. [Result](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#result)
 4. [Further](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#further)
