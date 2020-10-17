@@ -8,24 +8,12 @@ Authorized [SeungilLee](https://github.com/ChoiIseungil)
 
 -----------
 
-You can also pull non-pretrained FixMixMatch model code by:
+The model output of FixMixMatch and ThresholdMixMatch
 
-    nsml pull kaist0015/fashion_dataset/1321 .
+[Google Drive link](https://drive.google.com/drive/folders/1ScaF1vOAzG5SH8tRDENPIhInFcScjaBA?usp=sharing)
 
-You can also pull non-pretrained ThresholdMixMatch model code by:
-
-    nsml pull kaist0015/fashion_dataset/1400 .
-
------------
-
-You can also pull pretrained FixMixMatch model code by:
-
-    nsml pull kaist0015/fashion_dataset/2877 .
-
-You can also pull pretrained ThresholdMixMatch model code by:
-
-    nsml pull kaist0015/fashion_dataset/2878 .
-
+FixMixMatch_np.pt and FixMixMatch_p.pt are each for FixMixMatch model in non-pretrained and pretrained option
+ThresholdMixMatch_np.pt and ThresholdMixMatch_p.pt are each for ThresholdMixMatch model in non-pretrained and pretrained option
 
 # Table of contents
 1. [Summary](https://github.com/DonghwanKIM0101/CS492I_CV/blob/main/README.md#summary)
