@@ -53,6 +53,13 @@ Our team's approach is to exploit [FixMatch](https://arxiv.org/pdf/2001.07685.pd
 
 ## Threshold
 
+Threshold is one of main concept of FixMatch.
+
+![Alt text](Image/threshold.png)
+
+By using threshold while guessing pseudo label, the model only learn for confident unlabeled data.
+
+
 ## Data Augmentation
 
 # Result
